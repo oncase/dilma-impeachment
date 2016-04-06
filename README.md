@@ -7,7 +7,8 @@ Lá, a gente vê uma lista com:
  * Casa (Senado/Câmara);
  * Partido;
  * UF;
- * Posição com relação ao impeachment (contra, a favor, indeciso).
+ * Posição com relação ao impeachment (contra, a favor, indeciso);
+ * Link para página com maiores informações sobre o parlamentar;
 
 # Ambiente
 
