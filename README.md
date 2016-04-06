@@ -9,6 +9,16 @@ Lá, a gente vê uma lista com:
  * UF;
  * Posição com relação ao impeachment (contra, a favor, indeciso).
 
+# Ambiente
+
+Toda a parte de integração de dados é implementada com o Pentaho Data Integration.
+
+As visualizações também serão construídas no topo da plataforma Pentaho de Business Analytics, em sua distribuição Community Edition.
+
+### Dependências:
+
+Para o Pentaho Data Integration, adicionar a lib **jodd-x.x.jar** em `data-integration/lib`. A biblioteca ser baixada em http://jodd.org/download/.
+
 # Análise
 
 O Intuito desse repositório, é implementar com Pentaho, uma solução para ingestão desses dados e apresentação de informações de diversas maneiras através de:
