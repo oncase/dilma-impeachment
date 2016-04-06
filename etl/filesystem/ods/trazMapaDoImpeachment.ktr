@@ -85,47 +85,19 @@
   <hop> <from>contra</from><to>extrai lista  3</to><enabled>Y</enabled> </hop>
   <hop> <from>extrai lista  2</from><to>projeta lista</to><enabled>Y</enabled> </hop>
   <hop> <from>extrai lista  3</from><to>projeta lista</to><enabled>Y</enabled> </hop>
+  <hop> <from>projeta lista</from><to>faz parse da lista</to><enabled>Y</enabled> </hop>
+  <hop> <from>faz parse da lista</from><to>proje&#xe7;&#xe3;o</to><enabled>Y</enabled> </hop>
+  <hop> <from>proje&#xe7;&#xe3;o</from><to>&#xe9; parlamentar&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>&#xe9; parlamentar&#x3f;</from><to>tchau</to><enabled>Y</enabled> </hop>
+  <hop> <from>&#xe9; parlamentar&#x3f;</from><to>uf&#x2f;cargo</to><enabled>Y</enabled> </hop>
+  <hop> <from>uf&#x2f;cargo</from><to>partido, uf, link, qtd</to><enabled>Y</enabled> </hop>
+  <hop> <from>partido, uf, link, qtd</from><to>remove</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove</from><to>mapeia cargo</to><enabled>Y</enabled> </hop>
+  <hop> <from>mapeia cargo</from><to>mapeia opiniao</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>html da p&#xe1;gina</name>
-    <type>HTTP</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <url/>
-    <urlInField>Y</urlInField>
-    <urlField>urlVemPraRua</urlField>
-    <encoding>UTF-8</encoding>
-    <httpLogin/>
-    <httpPassword>Encrypted </httpPassword>
-    <proxyHost/>
-    <proxyPort/>
-    <socketTimeout>10000</socketTimeout>
-    <connectionTimeout>10000</connectionTimeout>
-    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
-    <lookup>
-    </lookup>
-    <result>
-      <name>html</name>
-      <code/>
-      <response_time/>
-    </result>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>224</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>urlVemPraRua</name>
-    <type>RowGenerator</type>
+    <name>a favor</name>
+    <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -136,27 +108,55 @@
            </partitioning>
     <fields>
       <field>
-        <name>urlVemPraRua</name>
+        <name>opiniao</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>http&#x3a;&#x2f;&#x2f;mapa.vemprarua.net&#x2f;br&#x2f;</nullif>
+        <nullif>primary</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-    <limit>1</limit>
-    <never_ending>N</never_ending>
-    <interval_in_ms>5000</interval_in_ms>
-    <row_time_field>now</row_time_field>
-    <last_time_field>FiveSecondsAgo</last_time_field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>64</xloc>
-      <yloc>144</yloc>
+      <xloc>384</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>contra</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>opiniao</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>red</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>384</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -200,7 +200,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 	jodd.jerry.Jerry doc = jodd.jerry.Jerry.jerry(html);
     String lista = doc.$("div.lista-parlamentares.panel-"+opiniao).html();
     
-    get(Fields.Out, "lista").setValue(r, lista);
+    get(Fields.Out, "lista").setValue(r, "<lista>"+lista+"</lista>");
 
 
     putRow(data.outputRowMeta, r);
@@ -226,34 +226,6 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>528</xloc>
       <yloc>64</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>projeta lista</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>opiniao</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>lista</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>688</xloc>
-      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -297,7 +269,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 	jodd.jerry.Jerry doc = jodd.jerry.Jerry.jerry(html);
     String lista = doc.$("div.lista-parlamentares.panel-"+opiniao).html();
     
-    get(Fields.Out, "lista").setValue(r, lista);
+    get(Fields.Out, "lista").setValue(r, "<lista>"+lista+"</lista>");
 
 
     putRow(data.outputRowMeta, r);
@@ -366,7 +338,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 	jodd.jerry.Jerry doc = jodd.jerry.Jerry.jerry(html);
     String lista = doc.$("div.lista-parlamentares.panel-"+opiniao).html();
     
-    get(Fields.Out, "lista").setValue(r, lista);
+    get(Fields.Out, "lista").setValue(r, "<lista>"+lista+"</lista>");
 
 
     putRow(data.outputRowMeta, r);
@@ -397,8 +369,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </step>
 
   <step>
-    <name>a favor</name>
-    <type>Constant</type>
+    <name>faz parse da lista</name>
+    <type>getXMLData</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -407,24 +379,128 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <namespaceaware>N</namespaceaware>
+    <ignorecomments>N</ignorecomments>
+    <readurl>N</readurl>
+    <validating>N</validating>
+    <usetoken>N</usetoken>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <rownum_field/>
+    <encoding>UTF-8</encoding>
+    <file>
+      <name/>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
     <fields>
       <field>
-        <name>opiniao</name>
+        <name>link</name>
+        <xpath>a&#x2f;&#x40;href</xpath>
+        <element_type>attribut</element_type>
+        <result_type>valueof</result_type>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>primary</nullif>
         <length>-1</length>
         <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>parlamentar</name>
+        <xpath>a&#x2f;b</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>texto</name>
+        <xpath>.</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
       </field>
     </fields>
+    <limit>0</limit>
+    <loopxpath>&#x2f;&#x2f;ul&#x2f;li</loopxpath>
+    <IsInFields>Y</IsInFields>
+    <IsAFile>N</IsAFile>
+    <XmlField>lista</XmlField>
+    <prunePath/>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>384</xloc>
-      <yloc>64</yloc>
+      <xloc>816</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>html da p&#xe1;gina</name>
+    <type>HTTP</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <url/>
+    <urlInField>Y</urlInField>
+    <urlField>urlVemPraRua</urlField>
+    <encoding>UTF-8</encoding>
+    <httpLogin/>
+    <httpPassword>Encrypted </httpPassword>
+    <proxyHost/>
+    <proxyPort/>
+    <socketTimeout>10000</socketTimeout>
+    <connectionTimeout>10000</connectionTimeout>
+    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
+    <lookup>
+    </lookup>
+    <result>
+      <name>html</name>
+      <code/>
+      <response_time/>
+    </result>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>224</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -463,8 +539,191 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </step>
 
   <step>
-    <name>contra</name>
-    <type>Constant</type>
+    <name>mapeia cargo</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>cargo</field_to_use>
+    <target_field/>
+    <non_match_default>N&#x2f;D</non_match_default>
+    <fields>
+      <field>
+        <source_value>senad</source_value>
+        <target_value>Senador</target_value>
+      </field>
+      <field>
+        <source_value>deput</source_value>
+        <target_value>Deputado</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>688</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>partido, uf, link, qtd</name>
+    <type>Janino</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <formula><field_name>partido</field_name>
+<formula_string>texto.split&#x28;&#x22;-&#x22;&#x29;&#x5b;1&#x5d;.trim&#x28;&#x29;</formula_string>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+       <formula><field_name>uf</field_name>
+<formula_string>uf.toUpperCase&#x28;&#x29;</formula_string>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field>uf</replace_field>
+</formula>
+       <formula><field_name>link</field_name>
+<formula_string>&#x22;http&#x3a;&#x2f;&#x2f;mapa.vemprarua.net&#x22;&#x2b;link</formula_string>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field>link</replace_field>
+</formula>
+       <formula><field_name>qtd</field_name>
+<formula_string>1</formula_string>
+<value_type>Integer</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>944</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>projeta lista</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>opiniao</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>lista</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>688</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>proje&#xe7;&#xe3;o</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>opiniao</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>link</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>parlamentar</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>texto</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>944</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>remove</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>texto</name>
+      </remove>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>816</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>tchau</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1056</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>uf&#x2f;cargo</name>
+    <type>StringCut</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -475,22 +734,137 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
            </partitioning>
     <fields>
       <field>
-        <name>opiniao</name>
+        <in_stream_name>link</in_stream_name>
+        <out_stream_name>uf</out_stream_name>
+        <cut_from>1</cut_from>
+        <cut_to>3</cut_to>
+      </field>
+      <field>
+        <in_stream_name>link</in_stream_name>
+        <out_stream_name>cargo</out_stream_name>
+        <cut_from>4</cut_from>
+        <cut_to>9</cut_to>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>944</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>urlVemPraRua</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>urlVemPraRua</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>red</nullif>
+        <nullif>http&#x3a;&#x2f;&#x2f;mapa.vemprarua.net&#x2f;br&#x2f;</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <interval_in_ms>5000</interval_in_ms>
+    <row_time_field>now</row_time_field>
+    <last_time_field>FiveSecondsAgo</last_time_field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>384</xloc>
+      <xloc>64</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>&#xe9; parlamentar&#x3f;</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>uf&#x2f;cargo</send_true_to>
+<send_false_to>tchau</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>link</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>link</leftvalue>
+   <function>&#x3c;&#x3e;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>&#x22;&#x22;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>944</xloc>
       <yloc>240</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>mapeia opiniao</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>opiniao</field_to_use>
+    <target_field/>
+    <non_match_default>N&#x2f;D</non_match_default>
+    <fields>
+      <field>
+        <source_value>yellow</source_value>
+        <target_value>Indeciso</target_value>
+      </field>
+      <field>
+        <source_value>red</source_value>
+        <target_value>Contra</target_value>
+      </field>
+      <field>
+        <source_value>primary</source_value>
+        <target_value>A favor</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>560</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
