@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ExportManifest xmlns:ns2="http://www.pentaho.com/schema/">
+    <ExportManifestInformation exportDate="20-04-2016 07:06:46 CEST" exportBy="admin" rootFolder="/public/" manifestVersion="2"/>
+    <ExportManifestEntity path="Treinamento">
+        <ExportManifestProperty>
+            <EntityMetaData name="Treinamento" createdDate="2016-04-20T11:56:06.085+02:00" isFolder="true" path="Treinamento" isHidden="false" locale="en_US" title="Treinamento"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards">
+        <ExportManifestProperty>
+            <EntityMetaData name="Dashboards" createdDate="2016-04-20T11:56:12.624+02:00" isFolder="true" path="Treinamento/Dashboards" isHidden="false" locale="en_US" title="Dashboards"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards/assets">
+        <ExportManifestProperty>
+            <EntityMetaData name="assets" createdDate="2016-04-20T11:56:17.595+02:00" isFolder="true" path="Treinamento/Dashboards/assets" isHidden="false" locale="en_US" title="assets"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards/assets/css">
+        <ExportManifestProperty>
+            <EntityMetaData name="css" createdDate="2016-04-20T11:56:23.351+02:00" isFolder="true" path="Treinamento/Dashboards/assets/css" isHidden="false" locale="en_US" title="css"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards/assets/css/global.css">
+        <ExportManifestProperty>
+            <EntityMetaData name="global.css" createdDate="2016-04-20T12:00:02.295+02:00" isFolder="false" path="Treinamento/Dashboards/assets/css/global.css" isHidden="false" locale="en_US" title="global.css"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards/assets/img">
+        <ExportManifestProperty>
+            <EntityMetaData name="img" createdDate="2016-04-20T11:56:32.212+02:00" isFolder="true" path="Treinamento/Dashboards/assets/img" isHidden="false" locale="en_US" title="img"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards/assets/js">
+        <ExportManifestProperty>
+            <EntityMetaData name="js" createdDate="2016-04-20T11:56:28.106+02:00" isFolder="true" path="Treinamento/Dashboards/assets/js" isHidden="false" locale="en_US" title="js"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards/assets/js/helpers.js">
+        <ExportManifestProperty>
+            <EntityMetaData name="helpers.js" createdDate="2016-04-20T15:35:04.453+02:00" isFolder="false" path="Treinamento/Dashboards/assets/js/helpers.js" isHidden="false" locale="en_US" title="helpers.js"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards/impeachment.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="impeachment.cda" createdDate="2016-04-20T13:29:47.410+02:00" isFolder="false" path="Treinamento/Dashboards/impeachment.cda" isHidden="false" locale="en_US" title="impeachment.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards/impeachment.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="impeachment.cdfde" createdDate="2016-04-20T11:58:29.127+02:00" isFolder="false" path="Treinamento/Dashboards/impeachment.cdfde" isHidden="false" locale="en_US" title="impeachment.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Treinamento/Dashboards/impeachment.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="impeachment.wcdf" createdDate="2016-04-20T11:58:29.076+02:00" isFolder="false" path="Treinamento/Dashboards/impeachment.wcdf" isHidden="false" locale="en_US" description="impeachment" title="Impeachment"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+</ns2:ExportManifest>

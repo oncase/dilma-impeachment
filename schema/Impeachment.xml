@@ -1,0 +1,94 @@
+<Schema name="Camara">
+  <Cube name="Impeachment" visible="true" cache="true" enabled="true">
+    <Table name="fato_impeachment" schema="dw">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Voto">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Voto" visible="true" column="voto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Parlamentar">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Parlamentar" visible="true" column="parlamentar" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+          <Property name="Foto" column="foto" type="String">
+          </Property>
+          <Property name="Data Nascimento" column="dt_nascimento" type="Date">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Condi&#231;&#227;o">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Condi&#231;&#227;o" visible="true" column="condicao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Sexo">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Sexo" visible="true" column="sexo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="UF">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Regiao" visible="true" column="regiao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="UF" visible="true" column="uf" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Sigla">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Sigla" visible="true" column="sigla_partido" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+          <Property name="Nome completo" column="partido" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Ocupa&#231;&#227;o">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Ocupa&#231;&#227;o" visible="true" column="ocupacao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Grau de instru&#231;&#227;o">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Grau de instru&#231;&#227;o" visible="true" column="grau_instrucao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Estado civil">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Estado civil" visible="true" column="estado_civil" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Ra&#231;a auto declarada">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Ra&#231;a auto declarada" visible="true" column="raca" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Localidade Nascimento">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="UF Nascimento" visible="true" column="uf_nascimento" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Municipio Nascimento" visible="true" column="municipio_nascimento" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Faixa Et&#225;ria">
+      <Hierarchy visible="true" hasAll="true" allMemberName="Tudo">
+        <Level name="Faixa Et&#225;ria" visible="true" column="faixa_etaria" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Votos" column="quantidade" formatString="#,##0" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Despesa m&#225;x. campanha (R$)" column="despesa_maxima" formatString="#,##0.00" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="M&#233;dia de idade" column="idade_atual" formatString="#,##0" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

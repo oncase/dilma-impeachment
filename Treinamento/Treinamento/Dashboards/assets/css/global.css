@@ -1,0 +1,180 @@
+/* *************************************************************************
+    Importo fontes que utilizarei no painel.
+    Diversas fontes disponiveis em https://www.google.com/fonts
+   ************************************************************************* */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+
+body{
+    background-color:#E4E8EB;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+
+
+/* *************************************************************************
+     Estilos gerais reutilizaveis
+   ************************************************************************* */
+
+.imp-cinza-claro-bg {background-color:#f7f7f7;}
+.imp-cinza-bg       {background-color:#E4E8EB;}
+.imp-teal-bg        {background-color:#1CB09A;}
+.imp-red-bg         {background-color:#DA534F;}
+.imp-blue-bg        {background-color:#418BCA;}
+.imp-dark-bg        {background-color:#1D2939;}
+.imp-branco-bg      {background-color:#fff;}
+
+.imp-cinza-claro    {color:#f7f7f7;}
+.imp-cinza          {color:#E4E8EB;}
+.imp-branco         {color:#fff;}
+.imp-red            {color:#DA534F;}
+.imp-transp         {opacity:.8;}
+
+/* Titulos maiores */
+h1.imp-titulo01 {
+    font-weight: 300;
+    font-size: 24px;
+    margin-top: 10px; /* a margem default tem 20-top e 10-bottom */
+}
+
+/* Titulos de graficos e outros labels importantes */
+.imp-titulo{
+    font-weight:700;
+    font-size:14px;
+}
+
+/* Subtitulos de graficos */
+.imp-subtitulo{
+    font-size:11px;
+    font-weight:300;
+}
+
+/* borda que sera adotada para caixas */
+.imp-borda{
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+
+.imp-margem-vertical{
+    margin-top:30px;
+
+}
+
+
+/* *************************************************************************
+        Estilos especificos do header
+   ************************************************************************* */
+
+/* Estilo de fundo e borda do cabecalho do dashboard */
+.imp-header{
+    border-bottom:solid 1px #ccc;
+    line-height: 42px;
+}
+
+
+/* Override do estilo do select2 - tirando papagaiadas */
+.select2-container .select2-choice{
+    border:solid 1px #ccc;
+    border-radius:0;
+}
+/* Override do estilo do select2 caixa da setinha - tirando papagaiadas */
+.select2-container .select2-choice .select2-arrow{
+    background:transparent;
+    background-image:none;
+    border-radius:0;
+}
+
+/* Ajustando o label do filtro do header ... nao estava bem alinhado vert. */
+.imp-header-actions .imp-titulo{
+    line-height:46px;
+}
+
+
+
+/* *************************************************************************
+        Estilos especificos das caixas de resumo
+   ************************************************************************* */
+
+/* altura das caixas */
+.imp-coluna-resumo{
+    height:120px;
+}
+
+/* Tamanho dos icones */
+.imp-icone-kpi{
+    line-height: 96px;
+    font-size:54px;
+}
+
+/* Espacamento para o conteudo da caixa de KPI */
+.imp-kpi-legenda, .imp-kpi{
+    padding-right:15px;
+    padding-left:15px;
+}
+
+/* As legendas das caixas de KPI tem de estar em uppercase */
+.imp-kpi-legenda{
+    text-transform:uppercase;
+}
+
+/* Estilos e margens para as tres linhas de KPI - numero, percentual e texto */
+.imp-legenda-num{
+    margin-top:15px;
+}
+.imp-legenda-percent{
+    font-size:36px;
+    margin-top:-10px;
+}
+.imp-legenda-texto{
+    margin-top:-10px;
+}
+
+
+
+/* *************************************************************************
+        Estilos especificos da area de graficos
+   ************************************************************************* */
+
+/* Estilo para o titulo do grafico */
+.imp-titulo-grafico-container{
+    text-transform:uppercase;
+    padding:15px;
+}
+
+
+/* *************************************************************************
+        Tabela
+   ************************************************************************* */
+
+/* Distancia da tabela para a borda da caixa branca */
+.imp-tabela{
+    padding: 30px;
+}
+
+/* Redefinicao das bordas. Esses seletores eu pego inspecionando no console */
+.imp-tabela .dataTables_wrapper table.dataTable,
+.imp-tabela .dataTables_wrapper table.dataTable th,
+.imp-tabela .dataTables_wrapper table.dataTable td {
+    border: 0;
+    border-bottom: solid 1px #eee;
+}
+
+/* Redefinicao do campo de busca - largura total */
+.imp-tabela .dataTables_filter{
+    width:100%;
+}
+
+/* Redefinicao do campo de busca - largura total e fonte */
+.imp-tabela .dataTables_filter label {
+    font-weight: 300;
+    width: 100%;
+}
+
+/* Redefinicao do campo de busca - bordas do campo */
+.imp-tabela .dataTables_filter label > input{
+    border: solid 1px #ddd;
+    border-radius: 2px;
+    width: 100%;
+}
