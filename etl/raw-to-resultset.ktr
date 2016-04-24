@@ -1797,7 +1797,7 @@
     <rownumByFile>N</rownumByFile>
     <rownum_field/>
     <format>mixed</format>
-    <encoding/>
+    <encoding>UTF-8</encoding>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
       <name>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x2f;..&#x2f;data&#x2f;voting-raw.txt</name>
