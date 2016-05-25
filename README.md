@@ -73,6 +73,7 @@ O Intuito desse repositório, é implementar com Pentaho, uma solução para ing
 5. zipe o conteúdo da pasta `Treinamento/` e faça upload para o seu repositório de soluções do BA Server;
 6. Abra o dashboard.
 
+> **ATENÇÃO**: Se você estiver resolvendo LABS de nossos cursos de CTools e estiver utilizando essa base como recurso, tenha em mente que o painel aqui disponibilizado (pasta `Treinamento/`), assim como as instruções para fazer deploy dele, são apenas para consulta. Os labs que utilizam esse repositório, servem para construir exatamente esse dashboard que disponibilizamos aqui já completo. Então se estiver resolvendo os exercícios e quiser subir esse artefato para comparação, renomeie a pasta antes de zipá-la e fazer upload.
 
 # TO-DO / Contribuições
 
