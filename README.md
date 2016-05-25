@@ -66,6 +66,8 @@ O Intuito desse repositório, é implementar com Pentaho, uma solução para ing
 
 # Passos para subir o ambiente Câmara**x**TSE
 
+> Se estiver vindo dos labs, seguir somente até o passo 4.
+
 1. Crie uma tabela no seu banco descrita por `data/ddl.postgres.sql` - se você utiliza outro SGBD, sinta-se livre para adaptar o script e enviar-nos um pull-request;
 2. Abra o etl `etl/raw-to-result` e execute-o com o PDI;
 3. Crie uma conexão no seu BA-Server, que aponte para o banco para onde você populou os dados;
