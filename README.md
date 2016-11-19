@@ -15,7 +15,7 @@ Nos dados do VemPraRua, a gente vê uma lista com:
 
 ### Votação x TSE
 
-A gente montou um processo de ETL em `etl/raw-to-result`, que desagua numa tabela de fatos sobre a votação e tem diversas inforamções socio econômicas dos parlamentares.
+A gente montou um processo de ETL em `etl/raw-to-result`, que desagua numa tabela de fatos sobre a votação e tem diversas informações socioeconômicas dos parlamentares.
 
 Essa massa permitiu que montássemos um cubo OLAP e fizéssemos um dashboard montado no topo da plataforma Pentaho com CTools.
 
